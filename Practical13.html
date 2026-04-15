@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practical 13 - Bootstrap Mini Website</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+  background: linear-gradient(135deg, #0f172a, #312e81);
+  color: #e0e7ff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+.navbar {
+  background: rgba(15, 23, 42, 0.9) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #6366f1;
+}
+.navbar-brand {
+  color: #a5b4fc !important;
+}
+.nav-link {
+  color: #c7d2fe !important;
+}
+.nav-link:hover {
+  color: #a5b4fc !important;
+}
+
+
+.section {
+  padding: 80px 0;
+}
+
+
+.hero {
+  padding: 100px 0 60px;
+}
+
+
+.card {
+  background: #1e1b4b;
+  border: 1px solid #4f46e5;
+  border-radius: 18px;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(79, 70, 229, 0.5);
+}
+.card h5 {
+  color: #a5b4fc;
+}
+
+
+.btn-primary {
+  background: #6366f1;
+  border: none;
+  border-radius: 25px;
+}
+.btn-primary:hover {
+  background: #4f46e5;
+}
+.btn-outline-light {
+  border-radius: 25px;
+  border-color: #a5b4fc;
+  color: #a5b4fc;
+}
+.btn-outline-light:hover {
+  background: #a5b4fc;
+  color: #0f172a;
+}
+
+
+.form-control, .form-select {
+  background: #0f172a;
+  border: 1px solid #4f46e5;
+  color: #e0e7ff;
+}
+.form-control:focus, .form-select:focus {
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  border-color: #a5b4fc;
+}
+.form-label {
+  color: #c7d2fe;
+}
+
+
+.breadcrumb {
+  background: rgba(79, 70, 229, 0.15);
+  border-radius: 10px;
+}
+.breadcrumb a {
+  color: #a5b4fc;
+}
+
+
+footer {
+  background: #020617;
+  border-top: 1px solid #4f46e5;
+}
+
+/* HEADINGS */
+h1,h2,h3 {
+  color: #c7d2fe;
+}
+.display-5 {
+  color: #a5b4fc;
+}
+.text-muted {
+  color: #9ca3af !important;
+}
+</style>
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand fw-bold" href="#">Practical 13</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#cards">Features</a></li>
+<li class="nav-item"><a class="nav-link" href="#form">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+
+<section class="hero text-center">
+<div class="container">
+<h1 class="display-5 fw-bold">Modern Bootstrap UI</h1>
+<p class="text-muted">Practical 13 — Clean & Responsive Design</p>
+<p class="fw-semibold">Name: Vivek Lokhande | USN: CS25060</p>
+
+<div class="mt-4">
+<button class="btn btn-primary me-2">Explore</button>
+<a href="#form" class="btn btn-outline-light">Contact</a>
+</div>
+</div>
+</section>
+
+
+<div class="container mb-4">
+<nav>
+<ol class="breadcrumb p-3">
+<li class="breadcrumb-item"><a href="#">Home</a></li>
+<li class="breadcrumb-item active">Practical 13</li>
+</ol>
+</nav>
+</div>
+
+
+<section id="cards" class="section">
+<div class="container">
+<h2 class="text-center mb-5 fw-bold">Features</h2>
+
+<div class="row g-4">
+<div class="col-md-4">
+<div class="card p-4 h-100">
+<h5>Fast</h5>
+<p class="text-muted">Quick UI development using Bootstrap components.</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-4 h-100">
+<h5>Stylish</h5>
+<p class="text-muted">Modern theme with smooth animations.</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-4 h-100">
+<h5>Responsive</h5>
+<p class="text-muted">Perfect on all screen sizes.</p>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+
+<section id="form" class="section">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-6">
+
+<h3 class="text-center mb-4 fw-bold">Contact Form</h3>
+
+<form>
+<div class="mb-3">
+<label class="form-label">Name</label>
+<input type="text" class="form-control" placeholder="Enter name">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Email</label>
+<input type="email" class="form-control" placeholder="Enter email">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Message</label>
+<textarea class="form-control" rows="4"></textarea>
+</div>
+
+<button class="btn btn-primary w-100">Submit</button>
+
+</form>
+
+</div>
+</div>
+</div>
+</section>
+
+
+<footer class="text-center py-4">
+<p class="text-muted mb-0">© 2026 Practical 13 — S.B. Jain Institute of Technology</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
