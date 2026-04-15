@@ -1,0 +1,159 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practical 11 - HTML5 APIs</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+body {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
+
+.glass {
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    padding: 25px;
+}
+
+.section-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+#dragBox {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(45deg, #f43f5e, #fb7185);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    cursor: grab;
+}
+
+#dropBox {
+    height: 150px;
+    border: 2px dashed #ccc;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+#dropBox:hover {
+    background: rgba(255,255,255,0.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container py-5">
+
+<h1 class="text-center mb-5"> HTML5 API Playground</h1>
+
+
+<div class="d-flex flex-column gap-4">
+
+
+<div class="glass text-center">
+<div class="section-title"><i class="fa-solid fa-hand"></i> Drag & Drop</div>
+
+<div id="dragBox" draggable="true" class="mx-auto mb-3">
+<i class="fa-solid fa-arrows-up-down-left-right"></i>
+</div>
+
+<div id="dropBox">
+<i class="fa-solid fa-box-open"></i>&nbsp; Drop here
+</div>
+</div>
+
+
+<div class="glass text-center">
+<div class="section-title"><i class="fa-solid fa-location-dot"></i> Geolocation</div>
+
+<button class="btn btn-danger w-100 mb-3" onclick="getLocation()">
+<i class="fa-solid fa-map-pin"></i> Find My Location
+</button>
+
+<div id="location">Location will appear here</div>
+</div>
+
+
+<div class="glass text-center">
+<div class="section-title"><i class="fa-solid fa-database"></i> Web Storage</div>
+
+<input id="name" class="form-control mb-2" placeholder="Enter your name">
+
+<button class="btn btn-success w-100 mb-2" onclick="saveData()">
+<i class="fa-solid fa-save"></i> Save
+</button>
+
+<button class="btn btn-outline-light w-100" onclick="loadData()">
+<i class="fa-solid fa-download"></i> Load
+</button>
+
+<div id="result" class="mt-3"></div>
+</div>
+
+</div>
+</div>
+
+<script>
+let drag = document.getElementById("dragBox");
+let drop = document.getElementById("dropBox");
+
+drag.addEventListener("dragstart", e => {
+    e.dataTransfer.setData("text", "dragBox");
+});
+
+drop.addEventListener("dragover", e => e.preventDefault());
+
+drop.addEventListener("drop", e => {
+    e.preventDefault();
+    let data = e.dataTransfer.getData("text");
+    drop.innerHTML = "";
+    drop.appendChild(document.getElementById(data));
+});
+
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(
+        pos => {
+            document.getElementById("location").innerHTML =
+                "Lat: " + pos.coords.latitude + "<br>Lon: " + pos.coords.longitude;
+        },
+        () => {
+            document.getElementById("location").innerHTML = "Permission denied"; }
+    );
+}
+
+function saveData() {
+    let name = document.getElementById("name").value;
+    localStorage.setItem("username", name);
+    document.getElementById("result").innerHTML = "Saved!";
+}
+
+function loadData() {
+    let data = localStorage.getItem("username");
+    document.getElementById("result").innerHTML =
+        data ? "Hello, " + data : "No data found";
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
